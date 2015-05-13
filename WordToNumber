@@ -1,0 +1,124 @@
+
+package phoneticmajorsystem;
+
+public class WordToNumber {
+    String word = "";
+    public WordToNumber (String wurd) {
+        word = wurd;
+    }
+    public WordToNumber (){
+        //Add scanner for word
+    }
+    public String ToNumber (String word){
+        String number = "";
+        String nextletter = "";
+        for (int i = 0; i < word.length(); i++){
+            String letter = word.substring(i, i+1);
+            if (i+2 < word.length()) {
+                nextletter = word.substring(i+1, i+2);
+            }
+            else{
+                nextletter = "";
+            }
+            if ("Z".equalsIgnoreCase(letter)){
+                if (nextletter.equalsIgnoreCase("Z")){
+                    number = (number.concat(""));
+                }
+                else{
+                    number = (number.concat("0"));
+                }
+            }
+            else if (letter.equalsIgnoreCase("S")){
+                if (nextletter.equalsIgnoreCase("S")){
+                    number = (number.concat(""));
+                }
+                else if (nextletter.equalsIgnoreCase("H")){
+                    number = (number.concat("6"));
+                }
+                else{
+                    number = (number.concat("0"));
+                }
+            }
+            else if (letter.equalsIgnoreCase("T") || letter.equalsIgnoreCase("D")){
+                number = (number.concat("1"));
+            }
+            else if (letter.equalsIgnoreCase("N")){
+                number = (number.concat("2"));
+            }
+            else if (letter.equalsIgnoreCase("M")){
+                number = (number.concat("3"));
+            }
+            else if (letter.equalsIgnoreCase("R")){
+                if (nextletter.equalsIgnoreCase("R")){
+                    number = (number.concat(""));
+                }
+                else{
+                    number = (number.concat("4"));
+                }
+            }
+            else if (letter.equalsIgnoreCase("L")){
+                if (nextletter.equalsIgnoreCase("L")){
+                    number = (number.concat(""));
+                }
+                else{
+                    number = (number.concat("5"));
+                }
+            }
+            else if (letter.equalsIgnoreCase("J")){
+                number = (number.concat("6"));
+            }
+            else if (letter.equalsIgnoreCase("C")){
+                if (nextletter.equalsIgnoreCase("E") || nextletter.equalsIgnoreCase("I")){
+                    number = (number.concat("0"));
+                }
+                else if (nextletter.equalsIgnoreCase("H")){
+                    number = (number.concat("6"));
+                }
+                else if (nextletter.equalsIgnoreCase("K")){
+                    number = (number.concat(""));
+                }
+                else{
+                    number = (number.concat("7"));
+                }
+            }
+            else if (letter.equalsIgnoreCase("G")){
+                if (nextletter.equalsIgnoreCase("I") || nextletter.equalsIgnoreCase("E")){
+                    number = (number.concat("6"));
+                }
+                else if (nextletter.equalsIgnoreCase("G")){
+                    number = (number.concat(""));
+                }
+                else{
+                    number = (number.concat("7"));
+                }
+            }
+            else if (letter.equalsIgnoreCase("K")){
+                number = (number.concat("7"));
+            }
+            else if (letter.equalsIgnoreCase("F") || letter.equalsIgnoreCase("V")){
+                number = (number.concat("8"));
+            }
+            else if (letter.equalsIgnoreCase("B")){
+                number = (number.concat("9"));
+            }
+            else if (letter.equalsIgnoreCase("P")){
+                if (nextletter.equalsIgnoreCase("H")){
+                    number = (number.concat("8"));
+                }
+                else{
+                    number = (number.concat("9"));
+                }
+            }
+            else if (letter.equalsIgnoreCase("X")){
+                number = (number.concat("70"));
+            }
+        }
+        if (number.length() == 0){
+            number = "Empty";
+            return number;
+        }
+        else {
+            return number;
+        }
+    }
+}   
