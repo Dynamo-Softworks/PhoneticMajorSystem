@@ -1,0 +1,36 @@
+
+package phoneticmajorsystem;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+
+public class PhoneticMajorSystem {
+
+    public static void main(String[] args) throws IOException {
+
+        Scanner wurd = new Scanner(System.in);
+        boolean quit = false;
+        
+        while (!quit){
+            System.out.print("Enter a word or numbers: ");
+            try {
+                int word2 = wurd.nextInt();
+                String word1 = word2 + "";
+                NumberToWord tester1 = new NumberToWord();
+                List<String> wordlis = tester1.ToWord(word1);
+                for (String word : wordlis){
+                    System.out.println(word);
+                }
+            }
+            catch(InputMismatchException exception) {
+                String word1 = wurd.next();
+                WordToNumber tester1 = new WordToNumber();
+                System.out.println(tester1.ToNumber(word1));
+            }
+            quit = true;
+        }
+    }
+}
