@@ -1,0 +1,55 @@
+
+package phoneticmajorsystem;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class NumberToWord {
+    String number = "";
+    public NumberToWord(String nomber){
+        number = nomber;
+    }
+    public NumberToWord(){}
+    public List<String> ToWord(String number) throws FileNotFoundException, IOException{
+        FileInputStream f1= new FileInputStream("src/phoneticmajorsystem/NumbList.txt");
+        BufferedReader b1 = new BufferedReader(new InputStreamReader(f1));
+        List<Integer> wordpos = new ArrayList<>();
+        for (int i = 0; i < 109581; i += 1){
+            String line = b1.readLine();
+            if (line.equals(number)){
+                wordpos.add(i);
+            }
+        }
+        FileInputStream f2= new FileInputStream("src/phoneticmajorsystem/WordList.txt");
+        BufferedReader b2 = new BufferedReader(new InputStreamReader(f2));
+        List<String> wordlis = new ArrayList<>();
+        for (int i = 0; i < 109581; i++){
+            String line = b2.readLine();
+            for (int pos : wordpos){
+                if (pos == i){
+                    wordlis.add(line.substring(1,line.length() - 5));
+                }
+            }
+        }
+        if (wordlis.size() == 0){
+            NumberToWord tester1 = new NumberToWord();
+            String number1 = number.substring(0, number.length()/2);
+            String number2 = number.substring(number.length()/2, number.length());
+            List<String> wlip1 = tester1.ToWord(number1);
+            List<String> wlip2 = tester1.ToWord(number2);
+            wordlis.add("SPLIT");
+            wordlis.addAll(wlip1);
+            wordlis.add("SPLIT");
+            wordlis.addAll(wlip2);
+            return wordlis;
+        }
+        else{
+            return wordlis;            
+        }
+    } 
+}
